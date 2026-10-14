@@ -7,13 +7,53 @@
     <h1>Feedback</h1>
     <p>We welcome your feedback, bug reports, and feature suggestions. SpamGuard AI is an open-source project and we appreciate your input.</p>
 
-    <h2>How to Provide Feedback</h2>
+    <h2>Submit Quick Feedback</h2>
+    <p>Help us improve SpamGuard AI by letting us know about your experience or reporting false classifications:</p>
 
-    <h3>GitHub Issues (Preferred)</h3>
-    <p>The best way to report bugs, request features, or ask questions is through GitHub Issues. This allows us to track and prioritize your feedback publicly.</p>
+    <div class="card" style="max-width: 600px; margin: 1.5rem 0; padding: 1.5rem;">
+        <form id="feedback-form">
+            <div style="margin-bottom: 1rem;">
+                <label for="feedback-type" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Feedback Type</label>
+                <select id="feedback-type" style="width: 100%; padding: 0.5rem; border-radius: 6px; background: var(--color-bg-secondary); color: var(--color-text); border: 1px solid var(--color-border);">
+                    <option value="accurate">Model was accurate</option>
+                    <option value="false_positive">False Positive (Marked legitimate email as spam)</option>
+                    <option value="false_negative">False Negative (Missed a spam email)</option>
+                    <option value="feature_request">Feature Request / Suggestion</option>
+                    <option value="general">General Feedback</option>
+                </select>
+            </div>
 
-    <h3>Email</h3>
-    <p>You can also reach us by email. Please note that response times may vary.</p>
+            <div style="margin-bottom: 1rem;">
+                <label for="actual-label" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">What was the actual email? (Optional)</label>
+                <select id="actual-label" style="width: 100%; padding: 0.5rem; border-radius: 6px; background: var(--color-bg-secondary); color: var(--color-text); border: 1px solid var(--color-border);">
+                    <option value="">Not applicable / Not specified</option>
+                    <option value="spam">It was definitely Spam / Phishing</option>
+                    <option value="ham">It was Legitimate (Ham)</option>
+                </select>
+            </div>
+
+            <div style="margin-bottom: 1rem;">
+                <label for="rating" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Overall Rating (1 to 5)</label>
+                <select id="rating" style="width: 100%; padding: 0.5rem; border-radius: 6px; background: var(--color-bg-secondary); color: var(--color-text); border: 1px solid var(--color-border);">
+                    <option value="5">⭐⭐⭐⭐⭐ (5 - Excellent)</option>
+                    <option value="4">⭐⭐⭐⭐ (4 - Good)</option>
+                    <option value="3">⭐⭐⭐ (3 - Average)</option>
+                    <option value="2">⭐⭐ (2 - Needs Improvement)</option>
+                    <option value="1">⭐ (1 - Poor)</option>
+                </select>
+            </div>
+
+            <div style="margin-bottom: 1rem;">
+                <label for="user-notes" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Notes or Comments (Never include passwords or sensitive personal data)</label>
+                <textarea id="user-notes" rows="3" style="width: 100%; padding: 0.5rem; border-radius: 6px; background: var(--color-bg-secondary); color: var(--color-text); border: 1px solid var(--color-border);" placeholder="Describe the issue or suggestion..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--primary" id="btn-submit-feedback">Submit Feedback</button>
+            <div id="feedback-status" style="display: none; margin-top: 1rem; padding: 0.75rem; border-radius: 6px;"></div>
+        </form>
+    </div>
+
+    <h2>Other Ways to Connect</h2>
 
     <h2>What to Include in Bug Reports</h2>
     <ul>
@@ -33,6 +73,10 @@
     </ul>
 
     <h2>Contributing</h2>
-    <p>SpamGuard AI is open source. If you are interested in contributing code, documentation, or design improvements, please see the project README on GitHub for contribution guidelines.</p>
 </div>
 {% endblock %}
+
+{% block scripts %}
+<script src="/static/js/feedback.js"></script>
+{% endblock %}
+

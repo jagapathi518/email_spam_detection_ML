@@ -442,3 +442,25 @@ class TestInferenceWithModel:
         assert resp.status_code == 200
         assert resp.mimetype == "application/pdf"
         assert len(resp.data) > 1000
+
+    def test_api_stats_endpoint(self, client):
+        resp = client.get("/api/stats")
+        assert resp.status_code == 200
+        data = resp.get_json()
+        assert "status" in data
+        assert "total_scans" in data
+
+    def test_api_feedback_endpoint(self, client):
+        resp = client.post(
+            "/api/feedback",
+            json={
+                "feedback_type": "accurate",
+                "predicted_label": "spam",
+                "actual_label": "spam",
+                "rating": 5,
+                "user_notes": "Spot on detection",
+            },
+        )
+        assert resp.status_code == 200
+        data = resp.get_json()
+        assert data.get("status") in ("recorded", "deferred")

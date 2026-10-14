@@ -109,6 +109,14 @@ def create_app(testing: bool = False) -> Flask:
         except Exception as e:
             logging.getLogger(__name__).error("Model failed to load at startup: %s. /api/predict will return 503.", e)
 
+        # Initialize database tables if configured
+        try:
+            from app.db import init_db
+
+            init_db()
+        except Exception as e:
+            logging.getLogger(__name__).warning("Database initialization deferred: %s", e)
+
     # --- Error Handlers ---
     @app.errorhandler(404)
     def not_found(e):

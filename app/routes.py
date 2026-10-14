@@ -173,6 +173,21 @@ def predict():
 
     latency = time.monotonic() - start
     logger.info("route=/api/predict status=200 latency=%.4f request_id=%s", latency, rid)
+
+    # Record anonymous scan event to Supabase (Zero body/subject storage)
+    try:
+        from app.db import log_scan_event
+
+        log_scan_event(
+            label=prediction["label"],
+            score=prediction["score"],
+            signals=signals,
+            char_length=len(body_stripped),
+            model_version=prediction["model_version"],
+        )
+    except Exception as e:
+        logger.debug("Scan event logging skipped: %s", e)
+
     return jsonify(result), 200
 
 
@@ -191,6 +206,44 @@ def model_info():
     latency = time.monotonic() - start
     logger.info("route=/api/model-info status=200 latency=%.4f request_id=%s", latency, rid)
     return jsonify(info), 200
+
+
+@api_bp.route("/stats", methods=["GET"])
+def stats():
+    """Return anonymous aggregate scan analytics from Supabase."""
+    from app.db import get_analytics_summary
+
+    return jsonify(get_analytics_summary()), 200
+
+
+@api_bp.route("/feedback", methods=["POST"])
+def submit_feedback_api():
+    """Submit anonymous model accuracy feedback."""
+    from app.db import record_feedback
+
+    if not request.is_json:
+        return _safe_json_error("Content-Type must be application/json.", 415)
+
+    data = request.get_json(silent=True) or {}
+    feedback_type = str(data.get("feedback_type", "general"))[:50]
+    predicted_label = str(data.get("predicted_label", ""))[:20] or None
+    actual_label = str(data.get("actual_label", ""))[:20] or None
+    user_notes = str(data.get("user_notes", ""))[:500] or None
+    rating = data.get("rating")
+    if rating is not None:
+        try:
+            rating = int(rating)
+        except (ValueError, TypeError):
+            rating = None
+
+    success = record_feedback(
+        feedback_type=feedback_type,
+        predicted_label=predicted_label,
+        actual_label=actual_label,
+        user_notes=user_notes,
+        rating=rating,
+    )
+    return jsonify({"status": "recorded" if success else "deferred"}), 200
 
 
 # --- Page Routes ---

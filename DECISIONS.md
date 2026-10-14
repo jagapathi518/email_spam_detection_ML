@@ -16,3 +16,10 @@
 - **Decision:** Configured repository URL as `https://github.com/jagapathi518/email_spam_detection_ML`
 - **Reason:** User provided their GitHub repository URL.
 
+### D4: Supabase PostgreSQL Database Integration
+- **Decision:** Integrated Supabase PostgreSQL for privacy-safe scan analytics and user feedback.
+- **Privacy Enforcement:** Strictly adheres to Rule 4 ("No message content in logs or storage"). Only numeric scores, label enum, count of heuristic signals, and user feedback metadata are stored. Raw email subjects and bodies are NEVER persisted.
+- **Reliability:** Designed with graceful degradation: the application functions seamlessly even if the database is offline or unreachable.
+- **Reason:** Requested by user; provides telemetry, real-time metrics, and user feedback collection.
+
+
