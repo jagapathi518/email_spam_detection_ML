@@ -1,0 +1,123 @@
+{
+  "model_version": "v1",
+  "dataset": "Apache SpamAssassin Public Corpus",
+  "baseline": {
+    "accuracy": 0.968503937007874,
+    "precision": 0.9915254237288136,
+    "recall": 0.9,
+    "f1": 0.9435483870967742,
+    "roc_auc": 0.9903142961966491,
+    "confusion_matrix": [
+      [
+        627,
+        2
+      ],
+      [
+        26,
+        234
+      ]
+    ]
+  },
+  "production_model": {
+    "accuracy": 0.9786276715410573,
+    "precision": 0.9878542510121457,
+    "recall": 0.9384615384615385,
+    "f1": 0.9625246548323472,
+    "roc_auc": 0.9916045004280298,
+    "fp_count": 3,
+    "fn_count": 16,
+    "confusion_matrix": [
+      [
+        626,
+        3
+      ],
+      [
+        16,
+        244
+      ]
+    ],
+    "three_class_distribution": {
+      "spam": 245,
+      "uncertain": 5,
+      "not_spam": 639
+    },
+    "example_errors": [
+      {
+        "index": 34,
+        "actual": "ham",
+        "predicted": "spam",
+        "score": 0.9917,
+        "subject_preview": "This Weeks Movie Trivia Questi..."
+      },
+      {
+        "index": 97,
+        "actual": "spam",
+        "predicted": "ham",
+        "score": 0.6377,
+        "subject_preview": "FW: Make Money Fast And Legal!..."
+      },
+      {
+        "index": 132,
+        "actual": "spam",
+        "predicted": "ham",
+        "score": 0.0032,
+        "subject_preview": "LIE`S, MIS-INFORMATION and FRA..."
+      },
+      {
+        "index": 144,
+        "actual": "spam",
+        "predicted": "ham",
+        "score": 0.0009,
+        "subject_preview": "\u4e0a\u6b21\u662f\u4f60\u627e\u6211\u55ce?"
+      },
+      {
+        "index": 145,
+        "actual": "spam",
+        "predicted": "ham",
+        "score": 0.0009,
+        "subject_preview": "\u9019\u662f\u4f60\u4e0a\u6b21\u8981\u7684\u6771\u897f!"
+      },
+      {
+        "index": 172,
+        "actual": "spam",
+        "predicted": "ham",
+        "score": 0.2203,
+        "subject_preview": "An Information"
+      },
+      {
+        "index": 176,
+        "actual": "spam",
+        "predicted": "ham",
+        "score": 0.0541,
+        "subject_preview": "Fw: The Gold Buddha"
+      },
+      {
+        "index": 232,
+        "actual": "ham",
+        "predicted": "spam",
+        "score": 0.9255,
+        "subject_preview": "Buy Ryanair Travel Insurance T..."
+      },
+      {
+        "index": 276,
+        "actual": "spam",
+        "predicted": "ham",
+        "score": 0.0051,
+        "subject_preview": "NEW TECHNOLOGY - DIGITAL VIDEO..."
+      },
+      {
+        "index": 443,
+        "actual": "spam",
+        "predicted": "ham",
+        "score": 0.5455,
+        "subject_preview": "Traders                   DQB"
+      }
+    ]
+  },
+  "thresholds": {
+    "spam_threshold": 0.9,
+    "not_spam_threshold": 0.6200000000000004,
+    "mid_threshold": 0.7700000000000005,
+    "fp_rate_at_mid": 0.001584786053882726
+  }
+}

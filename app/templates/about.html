@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}About — SpamGuard AI{% endblock %}
+
+{% block content %}
+<div class="content-page">
+    <h1>About SpamGuard AI</h1>
+    <p>SpamGuard AI is a free, open-source tool that helps everyday email users check suspicious emails before trusting them. It was built as an educational project demonstrating real-world machine learning deployment.</p>
+
+    <h2>Who Is This For?</h2>
+    <p>Students, job seekers, office workers, and anyone who wants a quick, honest second opinion on a suspicious email. No technical knowledge required.</p>
+
+    <h2>How Was the Model Trained?</h2>
+    <p>The model was trained on the <strong>Apache SpamAssassin Public Corpus</strong>, a well-known dataset of real spam and legitimate (ham) emails. The training pipeline uses TensorFlow/Keras for model development and evaluation, but the production server uses a lightweight NumPy-only forward pass to save memory.</p>
+
+    <h2>Model Performance</h2>
+    <p>All metrics below are from evaluation on a held-out test set of 889 emails (629 legitimate, 260 spam) that was never seen during training or threshold selection:</p>
+    <ul>
+        <li><strong>Accuracy:</strong> 97.86%</li>
+        <li><strong>Precision:</strong> 98.79%</li>
+        <li><strong>Recall:</strong> 93.85%</li>
+        <li><strong>F1 Score:</strong> 96.25%</li>
+        <li><strong>ROC-AUC:</strong> 0.9916</li>
+        <li><strong>False Positives:</strong> 3 out of 629 legitimate emails (0.48%)</li>
+        <li><strong>False Negatives:</strong> 16 out of 260 spam emails (6.15%)</li>
+    </ul>
+    <p>Live metrics and model metadata are also exposed programmatically via the <a href="/api/model-info">/api/model-info</a> endpoint.</p>
+
+    <h2>Technology Stack</h2>
+    <ul>
+        <li><strong>ML Training:</strong> Python, TensorFlow/Keras, scikit-learn</li>
+        <li><strong>ML Serving:</strong> NumPy-only forward pass (no TensorFlow in production)</li>
+        <li><strong>Backend:</strong> Flask, Gunicorn</li>
+        <li><strong>Frontend:</strong> HTML, CSS, vanilla JavaScript (no build tools, no CDN)</li>
+        <li><strong>Hosting:</strong> Render (free tier, Docker runtime)</li>
+    </ul>
+
+    <h2>Open Source</h2>
+    <p>The full source code is available on GitHub. Contributions, bug reports, and feedback are welcome.</p>
+
+    <h2>Contact</h2>
+    <p>For feedback, questions, or bug reports:</p>
+    <ul>
+        <li><strong>GitHub Issues:</strong> The preferred way to report bugs or request features</li>
+        <li><strong>Email:</strong> Contact us via the <a href="/feedback">Feedback page</a></li>
+    </ul>
+</div>
+{% endblock %}

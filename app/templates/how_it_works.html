@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}How It Works — SpamGuard AI{% endblock %}
+
+{% block content %}
+<div class="content-page">
+    <h1>How It Works</h1>
+    <p>SpamGuard AI uses a combination of machine learning and rule-based heuristics to analyze email text for spam and phishing indicators.</p>
+
+    <h2>Step 1: Text Preprocessing</h2>
+    <p>When you submit an email, the subject and body are combined and standardized. This includes converting to lowercase, removing HTML tags, normalizing whitespace, and replacing URLs, email addresses, and phone numbers with special tokens. This ensures the model sees a clean, consistent input.</p>
+
+    <h2>Step 2: Tokenization</h2>
+    <p>The standardized text is split into words (tokens) and converted to numeric IDs using a vocabulary built during training. Words not in the vocabulary are mapped to a special "unknown" token. The sequence is padded or truncated to a fixed length.</p>
+
+    <h2>Step 3: ML Model Prediction</h2>
+    <p>The token IDs are fed into a neural network with three layers:</p>
+    <ul>
+        <li><strong>Embedding layer:</strong> Converts each token ID into a dense vector that captures semantic meaning.</li>
+        <li><strong>Global Average Pooling:</strong> Averages all token vectors into a single fixed-size representation of the entire email.</li>
+        <li><strong>Dense layers:</strong> Transform the representation into a single score between 0 and 1.</li>
+    </ul>
+    <p>This architecture was chosen for its small memory footprint (fits within 512 MB RAM) and fast inference speed, while still providing strong text classification performance.</p>
+
+    <h2>Step 4: Threshold Application</h2>
+    <p>The raw model score is compared against two thresholds (chosen on a validation set to minimize false positives on legitimate email):</p>
+    <ul>
+        <li><strong>Above the spam threshold:</strong> Classified as "Likely Spam"</li>
+        <li><strong>Below the not-spam threshold:</strong> Classified as "Likely Not Spam"</li>
+        <li><strong>Between the thresholds:</strong> Classified as "Uncertain" — the model is not confident enough to make a clear call</li>
+    </ul>
+    <p>The "uncertain" band is intentionally designed to reduce false positives. It is better to say "uncertain" than to incorrectly flag a legitimate email as spam.</p>
+
+    <h2>Step 5: Heuristic Signals</h2>
+    <p>Separately from the ML model, a set of pattern-matching rules check for common spam/phishing indicators:</p>
+    <ul>
+        <li>Urgency language ("act now", "limited time")</li>
+        <li>Prize or financial claims ("you have won", "claim your prize")</li>
+        <li>Credential requests ("verify your account", "enter your password")</li>
+        <li>Suspicious URL patterns (IP-address hosts, URL shorteners, punycode)</li>
+    </ul>
+    <p>These signals are clearly labeled as "heuristic" and are independent of the ML prediction.</p>
+
+    <h2>Why Train with TensorFlow but Serve Without It?</h2>
+    <p>TensorFlow is a powerful but large framework (~400 MB). In production, we only need the trained weights and a simple forward pass. By reimplementing the forward pass in NumPy (about 20 lines of math), we dramatically reduce memory usage and startup time — critical for a free-tier server with 512 MB RAM.</p>
+    <p>A "parity gate" verifies that the NumPy implementation produces identical results to the original Keras model on the full test set.</p>
+
+    <h2>Limitations</h2>
+    <ul>
+        <li>The model is trained on the Apache SpamAssassin corpus from the early 2000s and may not recognize modern phishing patterns.</li>
+        <li>Only text content is analyzed — not headers, attachments, SPF/DKIM/DMARC, or sender reputation.</li>
+        <li>The model score is not a calibrated probability.</li>
+        <li>This tool does not guarantee that an email is safe.</li>
+    </ul>
+</div>
+{% endblock %}

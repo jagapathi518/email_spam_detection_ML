@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+
+{% block title %}SpamGuard AI — Check Suspicious Emails Before You Trust Them{% endblock %}
+
+{% block content %}
+<!-- Hero -->
+<section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-content">
+        <div class="hero-badge">🛡️ Free &amp; No Registration</div>
+        <h1 id="hero-heading">
+            Check Suspicious Emails<br>
+            <span class="gradient-text">Before You Trust Them</span>
+        </h1>
+        <p class="hero-subtitle">
+            Paste any email and get an instant AI-powered analysis with heuristic signals
+            and safe next steps. No sign-up required, no data stored.
+        </p>
+        <div class="hero-actions">
+            <a href="/analyze" class="btn btn--primary btn--lg" id="cta-analyze">
+                Analyze an Email
+            </a>
+            <a href="/how-it-works" class="btn btn--secondary btn--lg" id="cta-how">
+                How It Works
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Privacy Summary -->
+<section class="section" aria-labelledby="privacy-heading">
+    <div class="privacy-callout" style="max-width: var(--max-width-content); margin: 0 auto;">
+        <span class="privacy-callout-icon" aria-hidden="true">🔒</span>
+        <div class="privacy-callout-text">
+            <strong>Your privacy matters.</strong> We do not store, log, or share the email text you submit.
+            Your text is processed in memory on our server and discarded immediately after analysis.
+            See our <a href="/privacy">Privacy Policy</a> for full details.
+        </div>
+    </div>
+</section>
+
+<!-- How It Works Preview -->
+<section class="section" aria-labelledby="how-heading" style="background: var(--color-bg-secondary);">
+    <div class="section-header">
+        <h2 id="how-heading">How It Works</h2>
+        <p>Three simple steps to check any suspicious email</p>
+    </div>
+    <div class="steps-container">
+        <div class="step">
+            <div class="step-number" aria-hidden="true">1</div>
+            <div class="step-content">
+                <h3>Paste Your Email</h3>
+                <p>Copy the subject line and body of a suspicious email into our analyzer. No attachments or headers needed.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-number" aria-hidden="true">2</div>
+            <div class="step-content">
+                <h3>Get AI Analysis</h3>
+                <p>Our machine learning model analyzes the text patterns, while heuristic rules check for known spam and phishing indicators.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-number" aria-hidden="true">3</div>
+            <div class="step-content">
+                <h3>Follow Safe Steps</h3>
+                <p>Receive a clear verdict (spam, not spam, or uncertain), detailed signals, and practical next steps to stay safe.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features -->
+<section class="section" aria-labelledby="features-heading">
+    <div class="section-header">
+        <h2 id="features-heading">Why SpamGuard AI?</h2>
+        <p>Built for everyday email users who want a quick, honest second opinion</p>
+    </div>
+    <div class="feature-grid">
+        <div class="card feature-card">
+            <div class="feature-icon" aria-hidden="true">🤖</div>
+            <h3>ML-Powered Analysis</h3>
+            <p>A trained neural network analyzes text patterns learned from thousands of real spam and legitimate emails.</p>
+        </div>
+        <div class="card feature-card">
+            <div class="feature-icon" aria-hidden="true">🔍</div>
+            <h3>Heuristic Signals</h3>
+            <p>Pattern-based rules detect urgency language, prize claims, credential requests, suspicious URLs, and more.</p>
+        </div>
+        <div class="card feature-card">
+            <div class="feature-icon" aria-hidden="true">🔒</div>
+            <h3>Privacy First</h3>
+            <p>No registration, no database, no logging of your email text. Your data is processed and immediately discarded.</p>
+        </div>
+        <div class="card feature-card">
+            <div class="feature-icon" aria-hidden="true">⚡</div>
+            <h3>Instant Results</h3>
+            <p>Get analysis in seconds with a clear verdict, confidence score, and actionable next steps.</p>
+        </div>
+        <div class="card feature-card">
+            <div class="feature-icon" aria-hidden="true">♿</div>
+            <h3>Accessible</h3>
+            <p>WCAG 2.1 AA compliant with keyboard navigation, screen reader support, and reduced motion preferences.</p>
+        </div>
+        <div class="card feature-card">
+            <div class="feature-icon" aria-hidden="true">💰</div>
+            <h3>Completely Free</h3>
+            <p>No paid tiers, no ads, no premium features behind a paywall. Built as an open-source educational project.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Limitations -->
+<section class="section" style="background: var(--color-bg-secondary);" aria-labelledby="limits-heading">
+    <div class="section-header">
+        <h2 id="limits-heading">Important Limitations</h2>
+        <p>Transparency is a core value — here is what this tool cannot do</p>
+    </div>
+    <div class="feature-grid" style="max-width: var(--max-width-content);">
+        <div class="card feature-card">
+            <h3>Not a Safety Guarantee</h3>
+            <p>This tool provides a best-effort analysis. It does not guarantee an email is safe or malicious. Always exercise caution.</p>
+        </div>
+        <div class="card feature-card">
+            <h3>Text Analysis Only</h3>
+            <p>We analyze subject and body text only. We cannot check headers, attachments, SPF/DKIM/DMARC, or sender reputation.</p>
+        </div>
+        <div class="card feature-card">
+            <h3>Training Data Age</h3>
+            <p>The model is trained on the Apache SpamAssassin corpus (early 2000s). It may not recognize the latest phishing techniques.</p>
+        </div>
+        <div class="card feature-card">
+            <h3>Free-Tier Hosting</h3>
+            <p>Hosted on a free tier with limited resources. The server may take up to a minute to wake up after periods of inactivity.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" aria-labelledby="faq-heading">
+    <div class="section-header">
+        <h2 id="faq-heading">Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list">
+        <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" id="faq-q1">
+                Is my email text stored or shared?
+                <span class="faq-arrow" aria-hidden="true">▼</span>
+            </button>
+            <div class="faq-answer" aria-hidden="true" id="faq-a1">
+                No. Your text is processed in memory on our server and discarded immediately after generating the analysis. We do not log, store, or share the content of emails you submit. See our Privacy Policy for details.
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" id="faq-q2">
+                Why does the first request take so long?
+                <span class="faq-arrow" aria-hidden="true">▼</span>
+            </button>
+            <div class="faq-answer" aria-hidden="true" id="faq-a2">
+                SpamGuard AI is hosted on a free-tier server that spins down after 15 minutes of inactivity. When you send the first request, the server needs to wake up and load the model, which can take about a minute. Subsequent requests will be fast.
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" id="faq-q3">
+                How accurate is the model?
+                <span class="faq-arrow" aria-hidden="true">▼</span>
+            </button>
+            <div class="faq-answer" aria-hidden="true" id="faq-a3">
+                The model's metrics (accuracy, precision, recall, F1, ROC-AUC) are available on the About page and come directly from evaluation on a held-out test set. No model is perfect — this one was trained on older email data and may miss modern phishing patterns.
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" id="faq-q4">
+                Can I use this for business email security?
+                <span class="faq-arrow" aria-hidden="true">▼</span>
+            </button>
+            <div class="faq-answer" aria-hidden="true" id="faq-a4">
+                This tool is designed for personal, educational use. It is not a substitute for enterprise email security solutions. For business use, consider professional email security services that analyze headers, attachments, and sender reputation.
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" id="faq-q5">
+                Is this open source?
+                <span class="faq-arrow" aria-hidden="true">▼</span>
+            </button>
+            <div class="faq-answer" aria-hidden="true" id="faq-a5">
+                Yes. The full source code, training pipeline, and documentation are available on GitHub. See the About page for the repository link.
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/faq.js"></script>
+{% endblock %}

@@ -1,0 +1,11 @@
+{
+  "model_version": "v1",
+  "architecture": "embedding_pooling_dense",
+  "vocab_size": 15000,
+  "max_sequence_length": 256,
+  "embedding_dim": 64,
+  "dense_units": 32,
+  "dropout_rate": 0.3,
+  "max_vocab_size": 15000,
+  "use_float16_weights": false
+}

@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: spamguard-ai
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: PORT
+        value: "10000"
+      - key: MODEL_VERSION
+        value: v1
+      - key: RATE_LIMIT_PER_MINUTE
+        value: "20"
+      - key: RATE_LIMIT_PER_DAY
+        value: "200"

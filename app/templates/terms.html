@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Terms of Service — SpamGuard AI{% endblock %}
+
+{% block content %}
+<div class="content-page">
+    <h1>Terms of Service</h1>
+    <p><strong>Last updated:</strong> October 2024</p>
+
+    <p><strong>Important:</strong> These terms are provided as a starting point. They are not legal advice and have not been reviewed by a lawyer. The owner of this service must review and customize this document before relying on it. No legal compliance is claimed.</p>
+
+    <h2>Service Description</h2>
+    <p>SpamGuard AI is a free, experimental tool that analyzes email text for potential spam or phishing indicators. The service is provided "as is" without any warranties of any kind.</p>
+
+    <h2>No Guarantee of Accuracy</h2>
+    <p><strong>This tool does not guarantee that an email is safe or malicious.</strong> The analysis is based on a machine learning model and heuristic rules that have known limitations:</p>
+    <ul>
+        <li>The model was trained on historical email data and may not recognize new threats.</li>
+        <li>Only text content is analyzed — not headers, attachments, or sender information.</li>
+        <li>False positives (legitimate email flagged as spam) and false negatives (spam not detected) are possible.</li>
+    </ul>
+    <p>You should not rely solely on this tool for email security decisions.</p>
+
+    <h2>Acceptable Use</h2>
+    <p>You agree to use this service only for checking emails you have received or have permission to analyze. You agree not to:</p>
+    <ul>
+        <li>Submit content that you know to be illegal</li>
+        <li>Attempt to overload, abuse, or disrupt the service</li>
+        <li>Reverse-engineer the model or API for commercial use without permission</li>
+        <li>Use automated tools to send excessive requests (rate limits are enforced)</li>
+    </ul>
+
+    <h2>Rate Limiting</h2>
+    <p>To ensure fair access for all users, API requests are rate-limited. If you exceed the rate limit, you will receive an HTTP 429 response. Please wait before retrying.</p>
+
+    <h2>Availability</h2>
+    <p>This service is hosted on a free tier and may be unavailable due to:</p>
+    <ul>
+        <li>Server spin-down after inactivity (cold starts may take about a minute)</li>
+        <li>Monthly instance-hour limits on the hosting platform</li>
+        <li>Maintenance or updates</li>
+    </ul>
+    <p>No uptime guarantee is provided.</p>
+
+    <h2>Limitation of Liability</h2>
+    <p>To the maximum extent permitted by law, the creators of SpamGuard AI shall not be liable for any damages arising from the use or inability to use this service, including but not limited to damages from relying on the analysis results.</p>
+
+    <h2>Changes to Terms</h2>
+    <p>These terms may be updated at any time. Continued use of the service constitutes acceptance of the updated terms.</p>
+
+    <h2>Contact</h2>
+    <p>For questions about these terms, please reach out via the <a href="/feedback">Feedback page</a>.</p>
+</div>
+{% endblock %}

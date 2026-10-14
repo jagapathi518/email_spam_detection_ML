@@ -1,0 +1,6 @@
+# Development requirements
+-r requirements-train.txt
+pytest>=8.0
+ruff>=0.8.0
+pip-audit>=2.7.0
+requests>=2.32.0

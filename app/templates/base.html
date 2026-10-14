@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SpamGuard AI — Check suspicious emails before you trust them. Free, no registration required.">
+    <meta name="referrer" content="no-referrer">
+    <title>{% block title %}SpamGuard AI{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="site-header" role="banner">
+        <nav class="nav-container" aria-label="Main navigation">
+            <a href="/" class="nav-logo" aria-label="SpamGuard AI Home">
+                <span class="logo-icon" aria-hidden="true">🛡️</span>
+                <span class="logo-text">SpamGuard<span class="logo-accent">AI</span></span>
+            </a>
+            <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu" id="nav-toggle">
+                <span class="hamburger" aria-hidden="true"></span>
+            </button>
+            <ul class="nav-menu" id="nav-menu" role="menubar">
+                <li role="none"><a href="/" role="menuitem" class="nav-link">Home</a></li>
+                <li role="none"><a href="/analyze" role="menuitem" class="nav-link nav-link--cta">Analyze</a></li>
+                <li role="none"><a href="/how-it-works" role="menuitem" class="nav-link">How It Works</a></li>
+                <li role="none"><a href="/about" role="menuitem" class="nav-link">About</a></li>
+                <li role="none"><a href="/feedback" role="menuitem" class="nav-link">Feedback</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content" role="main">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+                <a href="/feedback">Feedback</a>
+                <a href="/about">About</a>
+            </div>
+            <p class="footer-disclaimer">
+                SpamGuard AI is a free tool for informational purposes only.
+                It does not guarantee an email is safe. Always exercise caution.
+            </p>
+        </div>
+    </footer>
+
+    <script src="/static/js/nav.js"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

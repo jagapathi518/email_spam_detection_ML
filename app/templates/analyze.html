@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}Analyze Email — SpamGuard AI{% endblock %}
+
+{% block content %}
+<div class="analyzer-container">
+    <h1>Analyze an Email</h1>
+    <p class="text-muted mb-lg">Paste the subject and body of a suspicious email below. Your text is not stored or logged.</p>
+
+    <!-- Analyzer Form -->
+    <form class="analyzer-form" id="analyzer-form" aria-label="Email analysis form">
+        <div class="form-group" style="margin-bottom: var(--space-lg);">
+            <label for="subject-input" class="form-label">Subject Line (optional)</label>
+            <input
+                type="text"
+                id="subject-input"
+                class="form-input"
+                placeholder="e.g., URGENT: Your account has been compromised"
+                maxlength="300"
+                autocomplete="off"
+                aria-describedby="subject-counter"
+            >
+            <span class="char-counter" id="subject-counter" aria-live="polite">0 / 300</span>
+        </div>
+
+        <div class="form-group" style="margin-bottom: var(--space-lg);">
+            <label for="body-input" class="form-label">Email Body (required)</label>
+            <textarea
+                id="body-input"
+                class="form-textarea"
+                placeholder="Paste the full email body text here..."
+                maxlength="20000"
+                rows="10"
+                autocomplete="off"
+                required
+                aria-describedby="body-counter"
+                aria-required="true"
+            ></textarea>
+            <span class="char-counter" id="body-counter" aria-live="polite">0 / 20000</span>
+        </div>
+
+        <div class="form-actions">
+            <button type="button" class="btn btn--primary btn--lg" id="analyze-btn">
+                🔍 Analyze Email
+            </button>
+            <button type="button" class="btn btn--secondary" id="clear-btn">
+                Clear
+            </button>
+            <div class="sample-buttons">
+                <button type="button" class="btn btn--ghost btn--sm" id="sample-spam-btn">
+                    📧 Load Spam Sample
+                </button>
+                <button type="button" class="btn btn--ghost btn--sm" id="sample-legit-btn">
+                    📧 Load Legit Sample
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay" role="status">
+        <div class="spinner" aria-hidden="true"></div>
+        <p class="loading-text" id="loading-text">Analyzing your email...</p>
+    </div>
+
+    <!-- Error Block -->
+    <div id="error-block" class="card" style="display: none; border-color: var(--color-danger); margin-bottom: var(--space-xl);" role="alert">
+        <p id="error-message" style="color: var(--color-danger); margin-bottom: var(--space-md);"></p>
+        <button type="button" class="btn btn--secondary btn--sm" id="retry-btn">Retry</button>
+    </div>
+
+    <!-- Results Container -->
+    <div class="results-container" id="results-container">
+        <!-- Model Prediction -->
+        <div class="result-section card" id="prediction-block" style="margin-bottom: var(--space-xl);"></div>
+
+        <!-- Heuristic Signals -->
+        <div class="result-section card" id="signals-block" style="margin-bottom: var(--space-xl);"></div>
+
+        <!-- Safe Next Steps -->
+        <div class="result-section card" id="next-steps-block" style="margin-bottom: var(--space-xl);"></div>
+
+        <!-- Disclaimer -->
+        <div class="disclaimer-text" id="disclaimer-block"></div>
+    </div>
+
+    <!-- Accessibility: Status announcer (aria-live) -->
+    <div id="status-announcer" class="sr-only" aria-live="assertive" aria-atomic="true" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);"></div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/analyzer.js"></script>
+{% endblock %}

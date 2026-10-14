@@ -1,0 +1,6 @@
+{
+  "spam_threshold": 0.9,
+  "not_spam_threshold": 0.6200000000000004,
+  "mid_threshold": 0.7700000000000005,
+  "fp_rate_at_mid": 0.001584786053882726
+}

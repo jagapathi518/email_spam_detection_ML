@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Privacy Policy — SpamGuard AI{% endblock %}
+
+{% block content %}
+<div class="content-page">
+    <h1>Privacy Policy</h1>
+    <p><strong>Last updated:</strong> October 2024</p>
+
+    <p><strong>Important:</strong> This privacy policy is provided for transparency. It is not legal advice and has not been reviewed by a lawyer. The owner of this service should review and customize this document before relying on it for legal compliance.</p>
+
+    <h2>What We Collect</h2>
+    <p><strong>We do not collect, store, or log the email text you submit for analysis.</strong></p>
+    <p>When you submit an email for analysis:</p>
+    <ul>
+        <li>The subject and body text are sent to our server over an encrypted HTTPS connection.</li>
+        <li>The text is processed in memory to generate the analysis result.</li>
+        <li>The text is discarded immediately after the response is sent. It is not written to any database, file, or log.</li>
+        <li>We do not use your submitted text for model training or any other purpose.</li>
+    </ul>
+
+    <h2>What the Hosting Platform May Log</h2>
+    <p>SpamGuard AI is hosted on Render.com. Like most hosting platforms, Render may automatically log certain operational data that we cannot prevent:</p>
+    <ul>
+        <li><strong>IP addresses</strong> in request logs (standard web server behavior)</li>
+        <li><strong>Request timestamps</strong> and HTTP status codes</li>
+        <li><strong>User-Agent strings</strong> from your browser</li>
+    </ul>
+    <p>We do not control Render's logging practices. See <a href="https://render.com/privacy">Render's Privacy Policy</a> for details.</p>
+
+    <h2>Our Application Logs</h2>
+    <p>Our application logs contain only:</p>
+    <ul>
+        <li>Timestamp</li>
+        <li>API route accessed</li>
+        <li>HTTP status code</li>
+        <li>Response latency</li>
+        <li>A random request ID (not linked to any user identity)</li>
+    </ul>
+    <p>Our logs <strong>never</strong> contain email subject lines, body text, or analysis results.</p>
+
+    <h2>Cookies</h2>
+    <p>We do not use cookies, tracking pixels, analytics services, or any form of user tracking.</p>
+
+    <h2>Third-Party Services</h2>
+    <p>We do not use any third-party analytics, advertising, or tracking services. No CDN scripts are loaded. All assets are served from our own domain.</p>
+
+    <h2>Data Retention</h2>
+    <p>We retain no user data. The hosting platform's operational logs are subject to their own retention policies.</p>
+
+    <h2>Children's Privacy</h2>
+    <p>This service is suitable for users of all ages. We do not knowingly collect personal information from anyone.</p>
+
+    <h2>Changes to This Policy</h2>
+    <p>We may update this privacy policy from time to time. Changes will be reflected by updating the "Last updated" date above.</p>
+
+    <h2>Contact</h2>
+    <p>If you have questions about this privacy policy, please reach out via the <a href="/feedback">Feedback page</a>.</p>
+</div>
+{% endblock %}
