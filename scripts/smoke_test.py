@@ -22,7 +22,6 @@ if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 
-
 def check(name, passed, detail=""):
     status = "PASS" if passed else "FAIL"
     print(f"  [{status}] {name}" + (f" — {detail}" if detail else ""))

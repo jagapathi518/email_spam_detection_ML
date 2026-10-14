@@ -54,7 +54,6 @@ def create_app(testing: bool = False) -> Flask:
         or os.environ.get("FORCE_HTTPS", "").lower() in ("true", "1")
     )
 
-
     csp = {
         "default-src": "'self'",
         "script-src": "'self'",

@@ -17,6 +17,7 @@ Pages:
 """
 
 import logging
+import os
 import time
 import uuid
 
@@ -25,6 +26,7 @@ from flask import (
     jsonify,
     render_template,
     request,
+    send_file,
 )
 
 from app.services import get_model_service
@@ -234,3 +236,20 @@ def terms():
 def feedback():
     """Feedback page."""
     return render_template("feedback.html")
+
+
+@pages_bp.route("/download/interview-guide")
+def download_interview_guide():
+    """Download the comprehensive interview preparation guide PDF."""
+    pdf_path = os.path.join(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+        "SpamGuard_AI_Interview_Preparation_Guide.pdf",
+    )
+    if os.path.exists(pdf_path):
+        return send_file(
+            pdf_path,
+            as_attachment=True,
+            download_name="SpamGuard_AI_Interview_Preparation_Guide.pdf",
+            mimetype="application/pdf",
+        )
+    return ("Interview Guide PDF not found on server", 404)

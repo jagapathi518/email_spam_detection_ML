@@ -24,4 +24,3 @@ if __name__ == "__main__":
     except ImportError:
         print(f"Starting Flask dev server on http://{host}:{port}")
         app.run(host=host, port=port, debug=debug)
-

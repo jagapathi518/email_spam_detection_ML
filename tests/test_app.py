@@ -436,3 +436,9 @@ class TestInferenceWithModel:
         result = svc.predict("Test meeting", "Hello team, let us meet tomorrow.")
         assert result["label"] in ("spam", "not_spam", "uncertain")
         assert 0.0 <= result["score"] <= 1.0
+
+    def test_download_interview_guide(self, client):
+        resp = client.get("/download/interview-guide")
+        assert resp.status_code == 200
+        assert resp.mimetype == "application/pdf"
+        assert len(resp.data) > 1000
